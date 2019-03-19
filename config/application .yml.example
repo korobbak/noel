@@ -1,0 +1,7 @@
+mysql_user_name : "root"
+mysql_user_password: ""
+db_name: "noel"
+S3_ACCESS_KEY: "AKIAJDURWEVFDJKU4C5Q"
+S3_SECRET_KEY: "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"
+S3_BUCKET: "noelweb"
+

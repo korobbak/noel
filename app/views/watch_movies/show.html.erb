@@ -1,10 +1,29 @@
+<%= content_tag "div", id: "products", data: {products: get_key_url_movie(params[:id]) } do %>
+<% end %>
+
+<script type="text/javascript">
+$(document).ready(function(e) {
+  $('iframe').attr('src', $('#products').data('products'))
+});
+</script>
+
 <div class="watch_top">
   <div class="watch_movie_text">
     <div class="watch_movie_text_2">
       <%= link_to @movie.name + " | Tập " + @episode_show.name, "#", class: "watch_movie_text_1"  %>
     </div>
   </div>
-  <iframe src=<%= watch_movie(get_key_url_movie params[:id]) %> frameborder="0"  scrolling="no"  allowfullscreen allow="autoplay; encrypted-media"></iframe>
+  <iframe src="" frameborder="0" scrolling="no" controlsList="nodownload" allowfullscreen allow="autoplay; encrypted-media" onload = "displayResult ()"></iframe>
+  <div style="width: 100%; height: 55px; position: relative; margin-top: -528px;">
+  </div>
+  <% if kt(params[:id]) == 0 %>
+    <div style="width: 45px; height: 39px; position: relative; margin-top: 435px; float: right;">
+
+    </div>
+    <div style="width: 45px; height: 39px; position: relative; margin-top: 435px; float: right; margin-right: 65px;">
+
+    </div>
+  <% end %>
 </div>
 <div class="watch_bottom">
   <% (0..0).each do %>
@@ -13,7 +32,7 @@
     </div>
     <div class="text_watch_2">
       <% @episode.each do |e| %>
-        <%= link_to watch_movie_path(@episode.to_a[0].id), class: "frame_text_watch_3" do %>
+        <%= link_to watch_movie_path(e.id), class: "frame_text_watch_3" do %>
           <div style="padding-left: 5px; padding-right: 5px;">
             Tập <%= e.name %>
           </div>
@@ -43,5 +62,19 @@
   </div>
  </div>
 </div>
+<% if !current_user.nil? && current_user.user_role_id == 3 %>
+    <div style="min-height: 80px; width: 100px; position:fixed; z-index: 9999; margin-top: -600px; margin-left: -110px;">
+      <%= link_to movie_carts_url, class: "link_gio_phim" do %>
+        <div class="Giophim">
+          <div style="height: 5px; width: 100%;">
+          </div>
+          <div style="height: 100%; width: 15px;">
+          </div>
+          <i class="fa fa-qq" style="font-size: 30px;"></i>
+          <p>Giỏ phim</p>
+        </div>
+      <% end %>
+    </div>
+  <% end %>
 <div style="clear: both; height: 5px;">
 </div>

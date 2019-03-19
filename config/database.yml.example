@@ -1,0 +1,20 @@
+default: &default
+  adapter: mysql2
+  encoding: utf8
+  pool: 5
+  database: <%= ENV["db_name"] %>
+  username: <%= ENV["mysql_user_name"] %>
+  password: <%= ENV["mysql_user_password"] %>
+  socket: /var/run/mysqld/mysqld.sock
+
+development:
+  <<: *default
+  database: <%= ENV["db_name"] %>
+
+test:
+  <<: *default
+  database: <%= ENV["db_name"] %>
+
+production:
+  <<: *default
+  database: <%= ENV["db_name"] %>
