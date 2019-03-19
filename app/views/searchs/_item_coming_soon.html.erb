@@ -1,0 +1,11 @@
+<% @movie_coming_soon.each do |m|  %>
+  <div class="item_home">
+    <%= link_to (image_tag m.image_url.url, class: "image_item_home"), detail_movie_path(m.id) %>
+    <div class="text_home_frame">
+      <%= link_to detail_movie_path(m.id), class: "name_movie" do %>
+        <p><%= m.name %></p>
+      <% end %>
+      <p><%= m.content %></p>
+    </div>
+  </div>
+<% end %>

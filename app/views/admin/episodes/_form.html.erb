@@ -1,0 +1,11 @@
+<%= form_with model: [:admin, @episode], local: true do |f| %>
+  <%= f.label :name, "Số tập : ", class: "set_lable_episodes" %>
+  <%= f.text_field :name, class: "form-control" %></br>
+
+  <%= f. hidden_field :movie_id ,:value => params[:id] %>
+
+  <%= f.label :episode_url, "Link tập phim : ", class: "set_lable_episodes" %>
+  <%= f.text_area :episode_url, class: "form-control md-textarea",rows: "4" %></br>
+
+  <%= f.submit yield(:button_text), class: "btn btn-primary set_buttom_episodes" %>
+<% end %>

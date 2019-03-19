@@ -1,0 +1,21 @@
+vi:
+  application:
+    title: "Noel"
+  header:
+    login: "Đăng nhập"
+    register: "Đăng ký"
+    language: "Ngôn ngữ :"
+    home: "Trang chủ"
+    kind: "Thể loại phim"
+    year: "Phim theo năm"
+    episode_manager: " Quản lý tập phim"
+    episode: "Tập phim"
+    movie: "Phim"
+    account: "Account"
+    movie_manager: "Quản lý phim"
+    movie_add: "Thêm phim"
+    episode_add: "Thêm tập phim"
+  footer:
+    content: "Chúc bạn có thời gian thư giãn vui vẻ"
+  home:
+    title: "Trang chủ"

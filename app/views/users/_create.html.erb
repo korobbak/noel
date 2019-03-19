@@ -1,0 +1,64 @@
+<div class="modal" id="myModal_create">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h4 class="modal-title" style="width: 100%; text-align: center; font-weight: bold;">Đăng ký tài khoản</h4>
+      </div>
+      <%= form_for :user, url: users_path do |f| %>
+        <div class="modal-body">
+          <table>
+            <tr>
+              <td class="text_create_user">
+                <%= f.label :first_name, "First Name:" %>
+              </td>
+              <td>
+              <%= f.text_field :first_name, class: "input_create_user", size: 30 %></td>
+            </tr>
+            <tr>
+              <td class="text_create_user">
+                <%= f.label :last_name, "Last Name:" %>
+              </td>
+              <td>
+              <%= f.text_field :last_name, class: "input_create_user", size: 30 %></td>
+            </tr>
+            <tr>
+              <td class="text_create_user">
+                <%= f.label :email, "Email :" %>
+              </td>
+              <td>
+              <%= f.text_field :email, class: "input_create_user", size: 30 %></td>
+            </tr>
+            <tr>
+              <td class="text_create_user">
+                <%= f.label :account, "Account :" %>
+              </td>
+              <td>
+              <%= f.text_field :account, class: "input_create_user", size: 30 %></td>
+            </tr>
+            <tr>
+              <td class="text_create_user">
+                <%= f.label :password, "Password :" %>
+              </td>
+              <td>
+                <%= f.password_field :password, class: "input_create_user", size: 30 %>
+              </td>
+            </tr>
+            <tr>
+              <td class="text_create_user">
+                <%= f.label :password_confirmation, "Re-enter pasword:" %>
+              </td>
+              <td>
+                <%= f.password_field :password_confirmation, class: "input_create_user", size: 30 %>
+              </td>
+            </tr>
+            <%= f.hidden_field :user_role_id, value: "3" %>
+          </table>
+        </div>
+
+        <div class="modal-footer">
+          <%= f.submit "Đăng ký", class: "btn btn-danger" %>
+        </div>
+      <% end %>
+    </div>
+  </div>
+</div>

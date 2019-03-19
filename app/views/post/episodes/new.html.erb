@@ -1,0 +1,39 @@
+<% provide :button_text, "Thêm tập phim" %>
+<div class="frame_new_episode">
+  <div style="width: 40%; box-shadow: 1px 1px 1px 1px black; height: 500px; float: left;">
+    <%= image_tag @movie.image_url.url, class: "image_new_episode" %>
+    <div style="float: left;">
+      <table style="width: 250px; margin-top: 80px;">
+        <tr>
+          <td style="font-size: 18px; font-weight: bold; width: 100px;"><b style="float: right;">
+            Tên phim :
+          </b> </td>
+          <td><span style="margin-top: 20px; float: left; height: 40px;"><%= @movie.name %></span></td>
+        </tr>
+         <tr>
+          <td style="font-size: 18px; font-weight: bold; width: 100px;"><b style="float: right;">
+            Số tập:
+          </b></td>
+          <td><span style="font-size: 16px;"><%= @movie.total_episodes %></span></td>
+        </tr>
+      </table>
+    </div>
+    <div style="clear: both; box-shadow: 1px 1px 1px 1px black; height: 310px;">
+      <div style="height: 5px; clear: both;"></div>
+      <h3 style="width: 100%; font-weight: bold; text-align: center;"> Các tập phim</h3>
+      <div style="width: 100%; background: #f2f2f2; height: 250px;">
+         <% @movie.episodes.all.each do |episode| %>
+          <div class="set_name_episode">
+            <%= link_to "Tập " + episode.name, edit_admin_episode_path(id: episode.id), class: "btn btn-danger tap"%>
+          </div>
+        <% end %>
+      </div>
+    </div>
+  </div>
+  <div style="width: 56%; height: 480px; float: right; margin-right: 20px; margin-top: 10px; ">
+    <%= render "form" %>
+  </div>
+</div>
+<div style="height: 5px; clear: both;">
+
+</div>

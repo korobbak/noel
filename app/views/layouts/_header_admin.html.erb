@@ -1,0 +1,38 @@
+<div class="header_top">
+  <div>
+    <%= link_to current_user.account , "", class: "link_login_header" %>
+    <i class="fa fa-qq" id=logo_login></i>
+    <%= link_to "Đăng xuất", logout_path, method: :delete, class: "link_login_header" %>
+  </div>
+</div>
+
+<div class="header_bottom">
+  <div class="nav_big">
+    <div>
+      <%= link_to image_tag("Noel.png", class: "logo_nav"), admin_index_path %>
+    </div>
+    <ul class="menu">
+      <li>
+        <%= link_to admin_users_url, class: "link_to_menu" do %>
+          <div class="text_nav_big_frame" style="width: 200px;">
+            <p>Quản lý tài khoản</p>
+          </div>
+        <% end %>
+      </li>
+      <li>
+        <%= link_to admin_movie_path(1), class: "link_to_menu" do %>
+          <div class="text_nav_big_frame">
+            <p>Quản lý phim</p>
+          </div>
+        <% end %>
+      </li>
+      <li>
+        <%= link_to admin_episodes_url, class: "link_to_menu" do %>
+          <div class="text_nav_big_frame" style="width: 200px;">
+            <p>Quản lý tập phim</p>
+          </div>
+        <% end %>
+      </li>
+    </ul>
+  </div>
+</div>
