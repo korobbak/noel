@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title><%= full_title yield :title %></title>
+    <%= favicon_link_tag "Noel.png" %>
+    <%= render "layouts/default" %>
+  </head>
+
+  <body class="layout">
+    <div class="header">
+      <%= render "layouts/header_admin" %>
+    </div>
+    <div class="content">
+      <%= yield %>
+       <% flash.each do |message_type, message| %>
+        <div class="alert alert-<%= message_type %>">
+          <%= message %>
+        </div>
+      <% end %>
+    </div>
+    <div class="footer">
+      <%= render "layouts/footer" %>
+    </div>
+  </body>
+</html>

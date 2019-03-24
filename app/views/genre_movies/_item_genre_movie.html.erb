@@ -1,0 +1,10 @@
+<% @movie.each do |m| %>
+  <div class="item_home_frame" >
+    <%= link_to detail_movie_path(m.id), class: "item_home" do %>
+      <%= image_tag m.image_url.url, class: "image_item_home" %>
+      <div class="text_home_frame">
+        <p><%= m.name %></p>
+      </div>
+    <% end %>
+  </div>
+<% end %>

@@ -1,0 +1,23 @@
+<div class="input_comment_frame">
+  <% if current_user.present? %>
+    <%= form_for @comment, remote: true do |f| %>
+      <div class="logo_comment_frame">
+        <%= image_tag "c1.jpg", class: "logo_comment" %>
+      </div>
+      <div class="input_comment_frame_1">
+        <p><%= current_user.first_name + current_user.last_name %></p>
+          <%= f.text_area :content , class: "input_comment", id: "input_comment",onfocus: "this.value=''" %>
+          <%= f.hidden_field :movie_id, value: @movie.id %>
+          <%= f.hidden_field :user_id, value: current_user.id %>
+      </div>
+      <div class="button_comment_frame">
+        <%= f.file_field :comment_image, accept: "image/jpeg,image/gif,image/png", class: "button_image_comment", id: "button_image_comment" %>
+        <%= f.submit "Đăng", class: "button_comment" %>
+      </div>
+    <%end%>
+  <% else %>
+    <div class="danger_comment_frame">
+       Bạn vui lòng đăng nhập để được bình luận
+    </div>
+  <% end %>
+</div>

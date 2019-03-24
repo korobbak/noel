@@ -1,0 +1,10 @@
+/*
+ *= require_self
+ *= require bootstrap.min
+ *= require w3
+ *= require custom
+ */
+@import 'bootstrap-sprockets';
+@import 'bootstrap';
+@import 'font-awesome-sprockets';
+@import 'font-awesome';

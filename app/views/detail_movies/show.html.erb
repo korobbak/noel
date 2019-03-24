@@ -1,0 +1,114 @@
+<div class="detail_top">
+  <div class="detail_left">
+    <%= image_tag @movie.image_url.url, class: "image_detail" %>
+  </div>
+  <div class="detail_right">
+    <div class="detail_text_3">
+      <%= @movie.name %>
+    </div>
+    <table>
+      <tr>
+        <td >
+          <div class="detail_text_1">
+            Thể loại :
+          </div>
+        </td>
+         <td class="block_detail"></td>
+        <td class="detail_text_2"><%= @movie.movie_types.sample.name %></td>
+      </tr>
+      <tr>
+        <td >
+          <div class="detail_text_1">
+            Tác giả :
+          </div>
+        </td>
+         <td class="block_detail"></td>
+        <td class="detail_text_2"><%= @movie.producer_name %></td>
+      </tr>
+      <tr>
+        <td >
+          <div class="detail_text_1">
+            Số tập :
+          </div>
+        </td>
+         <td class="block_detail"></td>
+        <td class="detail_text_2"><%= @movie.total_episodes %></td>
+      </tr>
+      <tr>
+        <td >
+          <div class="detail_text_1">
+            Tình trạng :
+          </div>
+        </td>
+         <td class="block_detail"></td>
+        <td class="detail_text_2"><%= @movie.episodes.count.to_s + "/" + @movie.total_episodes.to_s %></td>
+      </tr>
+    </table>
+    <% if @movie.episodes.count > 0 %>
+      <%= link_to watch_movie_path(@episode.to_a[0].id), class: "link_detail_1" do %>
+        <div class="text_link_detail">
+          <p>
+            Xem phim
+          </p>
+        </div>
+      <% end %>
+    <% else %>
+      <%= link_to "#", class: "link_detail_1" do %>
+        <div class="text_link_detail">
+          <p>
+            Phim sắp có
+          </p>
+        </div>
+      <% end %>
+    <% end %>
+    <% if !current_user.nil? %>
+      <% if !@movie_like.empty? %>
+        <%= link_to "#", class: "link_detail_2" do %>
+          <div class="text_link_detail">
+            <p>
+              Phim đã lưu <i class="fa fa-heart-o"></i>
+            </p>
+          </div>
+        <% end %>
+      <% else %>
+        <%= link_to insert_path(id: params[:id]), method: :patch, class: "link_detail_2" do %>
+          <div class="text_link_detail">
+            <p>
+              Lưu phim <i class="fa fa-heart-o"></i>
+            </p>
+          </div>
+        <% end %>
+      <% end %>
+    <% end %>
+  </div>
+</div>
+<div class="detail_bottom">
+  <div style="width: 95%; margin: auto">
+    <div class="name_detail">
+      <%= @movie.name %>
+    </div>
+    <p>
+      <%= @movie.content %>
+    </p>
+    <%= image_tag @movie.image_url.url, class: "image_detail_2"%>
+  </div>
+  <div style="clear: both; height: 20px">
+
+  </div>
+</div>
+<div class="detail_bottom">
+  <div class="content_home">
+      <p>
+        Phim nối bật cùng thể loại
+      </p>
+    </div>
+    <div class="home_frame">
+      <div class="item_home_frame">
+        <%= render "detail_movies/item_detail" %>
+      </div>
+    </div>
+</div>
+<div style="clear: both; height: 5px">
+
+</div>
+

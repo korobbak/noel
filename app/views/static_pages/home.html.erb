@@ -1,0 +1,150 @@
+<div class="slider">
+  <div class="w3-section w3-display-container" style="min-width:100%; padding: 0px;">
+    <%= image_tag "3.jpg", class: "mySlides w3-animate-left", style:"width:100%; height: 350px; margin-top: -15px;" %>
+    <%= image_tag "2.jpg", class: "mySlides w3-animate-left", style:"width:100%; height: 350px; margin-top: -15px;" %>
+    <%= image_tag "1.jpg", class: "mySlides w3-animate-left", style:"width:100%; height: 350px; margin-top: -15px;" %>
+    <div class="w3-center w3-container w3-section w3-large w3-text-white w3-display-bottommiddle" style="width:100%">
+      <div class="w3-left w3-hover-text-khaki" style="color: black; margin-top: -150px;" onclick="plusDivs(-1)">&#10094;</div>
+      <div class="w3-right w3-hover-text-khaki" style="color: black; margin-top: -150px;" onclick="plusDivs(1)">&#10095;</div>
+      <span class="w3-badge demo w3-border w3-transparent w3-hover-black" onclick="currentDiv(1)"></span>
+      <span class="w3-badge demo w3-border w3-transparent w3-hover-black" onclick="currentDiv(2)"></span>
+      <span class="w3-badge demo w3-border w3-transparent w3-hover-black" onclick="currentDiv(3)"></span>
+    </div>
+  </div>
+</div>
+<div class="home_left">
+  <div class="home_top">
+    <div class="content_home">
+      <p>
+        Phim mới của tháng
+      </p>
+      <%= link_to "Xem thêm >>" , "#", class: "link_content_home"%>
+    </div>
+    <div class="home_frame">
+      <div class="item_home_frame">
+        <%= render "static_pages/item_new" %>
+      </div>
+    </div>
+  </div>
+  <div class="home_bottom">
+    <div class="content_home">
+      <p>
+        Phim dài tập
+      </p>
+      <%= link_to "Xem thêm >>" , "#", class: "link_content_home"%>
+    </div>
+    <div class="home_frame">
+      <div class="item_home_frame">
+        <%= render "static_pages/item_series" %>
+      </div>
+    </div>
+  </div>
+</div>
+<div class="home_right">
+  <div class="home_top">
+    <div class="content_home">
+      <p>
+        Phim sắp chiếu
+      </p>
+    </div>
+    <div class="home_frame">
+      <%= render "static_pages/item_coming_soon" %>
+    </div>
+  </div>
+  <div class="home_bottom">
+    <div class="content_home">
+      <p>
+        Thể loại yêu thích
+      </p>
+    </div>
+    <div class="home_frame">
+      <%= link_to genre_movie_path(7), class: "item_home" do %>
+        <%= image_tag "1.jpg", class: "image_home" %>
+        <div class="item_home_frame">
+          <p>Học đường</p>
+        </div>
+      <% end %>
+      <div class="block_home"></div>
+      <%= link_to genre_movie_path(6), class: "item_home" do %>
+        <%= image_tag "2.jpg", class: "image_home" %>
+        <div class="item_home_frame">
+          <p style="margin: 35px 90px;">Loli</p>
+        </div>
+      <% end %>
+      <div class="block_home"></div>
+      <%= link_to genre_movie_path(12), class: "item_home" do %>
+        <%= image_tag "3.jpg", class: "image_home" %>
+        <div class="item_home_frame">
+          <p style="margin: 35px 70px;">Phiêu lưu</p>
+        </div>
+      <% end %>
+      <div class="block_home"></div>
+      <%= link_to genre_movie_path(29), class: "item_home" do %>
+        <%= image_tag "4.jpg", class: "image_home" %>
+        <div class="item_home_frame">
+          <p style="margin: 35px 80px;">Kinh dị</p>
+        </div>
+      <% end %>
+    </div>
+  </div>
+  <% if !current_user.nil? %>
+    <div style="min-height: 80px; width: 100px; position:fixed; z-index: 9999; margin-top: -1780px; margin-left: -900px;">
+      <%= link_to movie_carts_url, class: "link_gio_phim" do %>
+        <div class="Giophim">
+          <div style="height: 5px; width: 100%;">
+          </div>
+          <div style="height: 100%; width: 15px;">
+          </div>
+          <i class="fa fa-qq" style="font-size: 30px;"></i>
+          <p>Giỏ phim</p>
+        </div>
+      <% end %>
+    </div>
+  <% end %>
+</div>
+<div style="clear: both; height: 5px;">
+
+</div>
+
+<script>
+var myIndex = 0;
+carousel();
+
+function carousel() {
+  var i;
+  var x = document.getElementsByClassName("mySlides");
+  for (i = 0; i < x.length; i++) {
+    x[i].style.display = "none";
+  }
+  myIndex++;
+  if (myIndex > x.length) {myIndex = 1}
+  x[myIndex-1].style.display = "block";
+  setTimeout(carousel, 9000);
+}
+var slideIndex = 1;
+showDivs(slideIndex);
+
+function plusDivs(n) {
+  showDivs(slideIndex += n);
+}
+
+function currentDiv(n) {
+  showDivs(slideIndex = n);
+}
+
+function showDivs(n) {
+  var i;
+  var x = document.getElementsByClassName("mySlides");
+  var dots = document.getElementsByClassName("demo");
+  if (n > x.length) {slideIndex = 1}
+  if (n < 1) {slideIndex = x.length}
+  for (i = 0; i < x.length; i++) {
+    x[i].style.display = "none";
+  }
+  for (i = 0; i < dots.length; i++) {
+    dots[i].className = dots[i].className.replace(" w3-white", "");
+  }
+  x[slideIndex-1].style.display = "block";
+  dots[slideIndex-1].className += " w3-white";
+}
+</script>

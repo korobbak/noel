@@ -1,0 +1,73 @@
+  <%= form_with model: [:admin, @movie], local: true do |f| %>
+<table style="width: 95%; margin:auto">
+    <%= f.fields_for :movie_objects do |ff| %>
+      <tr style="height: 50px;">
+        <td class="set_text set_td1">
+          <%= ff.label :movie_type, "Thể loại : ", class: "col-sm-5 col-form-label" %>
+        </td>
+        <td class="set_td2">
+          <div class="col-sm-13">
+            <%= ff.select :movie_type_id, @list, class: "form-control", multiple: true %>
+          </div>
+        </td>
+      </tr>
+    <% end %>
+    <tr style="height: 60px;">
+      <td class="set_text set_td1">
+        <%= f.label :name, "Tên phim : ", class: "col-sm-5 col-form-label" %>
+      </td>
+      <td class="set_td2">
+        <div class="col-sm-13">
+          <%= f.text_field :name, class: "form-control", placeholder: "Nhập tên phim" %>
+        </div>
+      </td>
+    </tr>
+    <tr style="height: 60px;">
+      <td class="set_text set_td1">
+        <%= f.label :content, "Nội dung phim : ", class: "col-sm-6 col-form-label" %>
+      </td>
+      <td class="set_content">
+        <%= f.text_area :content, class: "form-control rounded-0", placeholder: "Nhập nội dung phim",rows: "4" %>
+      </td>
+    </tr>
+    <tr style="height: 60px;">
+      <td class="set_text set_padding set_td1">
+        <%= f.label :total_episodes, "Số tập : " , class: "col-sm-5 col-form-label" %>
+      </td>
+      <td class="set_td2">
+        <div class="col-sm-13 set_padding">
+          <%= f.text_field :total_episodes, class: "form-control", placeholder: "Nhập số tập phim là số" %>
+        </div>
+      </td>
+    </tr>
+    <tr style="height: 60px;">
+      <td class="set_text set_td1">
+        <%= f.label :producer_name, "Tác giả : ", class: "col-sm-6 col-form-label" %>
+      </td>
+      <td class="set_td2">
+        <div class="col-sm-13">
+          <%= f.text_field :producer_name, class: "form-control", placeholder: "Nhập tác giả" %>
+        </div>
+      </td>
+    </tr>
+    <tr style="height: 60px;">
+      <td class="set_text set_td1" >
+        <%= f.label :image_url, "Hình ảnh : ", class: "col-sm-6 col-form-label" %>
+      </td>
+      <td class="set_content">
+        <%= f.file_field :image_url, accept: "image/jpeg,image/gif,image/png", class: "form-control" %>
+      </td>
+    </tr>
+    <tr style="height: 80px;">
+      <td style="text-align: center;">
+
+      </td>
+    </tr>
+</table>
+<div style="clear: both; text-align: center; margin: -50px 0 0 40%;">
+  <%= f.submit "Thêm phim", class: "btn btn-primary" %>
+</div>
+<% end %>
+<div style="clear: both; height: 15px;">
+
+</div>

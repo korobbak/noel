@@ -1,0 +1,24 @@
+<% @comments.each do |comment|%>
+  <div class="item_comment_frame">
+    <div class="logo_comment_frame">
+      <%= image_tag "c1.jpg", class: "logo_comment" %>
+    </div>
+    <div class="input_comment_frame_1">
+      <p><%= comment.user.first_name + comment.user.last_name %></p>
+      <div class="input_comment">
+        <%= comment.content%>
+     </div>
+    </div>
+    <% if comment.comment_image.present? %>
+      <div class="image_comment_frame">
+        <%= image_tag comment.comment_image.url, class: "image_comment" %>
+      </div>
+    <% end %>
+    <div class="like_delete_comment_frame">
+      <%= link_to "Xóa", comment_path(comment), method: :delete,  data: { confirm: 'Bạn chắc chắn?' },remote: true , class: "delete_comment" %>
+    </div>
+    <div class="block_comment">
+    </div>
+  </div>
+<% end %>
+<%= paginate @comments, theme: "twitter-bootstrap-3" %>

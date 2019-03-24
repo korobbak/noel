@@ -1,0 +1,38 @@
+<div class="modal" id="myModal">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h4 class="modal-title" style="width: 100%; text-align: center; font-weight: bold;">Đăng nhập tài khoản</h4>
+      </div>
+      <%= form_for :session, url: login_path do |f| %>
+        <div class="modal-body">
+          <table>
+            <tr>
+              <td class="text_create_user">
+                <%= f.label :account, "Account :" %>
+                </td>
+              <td>
+              <%= f.text_field :account, class: "input_create_user", size: 30 %></td>
+            </tr>
+            <tr>
+              <td class="text_create_user">
+                <%= f.label :password, "Password :" %>
+                </td>
+              <td>
+                <%= f.password_field :password, class: "input_create_user", size: 30 %>
+              </td>
+            </tr>
+          </table>
+          <div class="login_frame_checkbox">
+            <%= f.check_box :remember_me %>
+            <span><%= t "Save ppassword" %></span>
+          </div>
+        </div>
+
+        <div class="modal-footer">
+          <%= f.submit "Đăng nhập", class: "btn btn-danger" %>
+        </div>
+      <% end %>
+    </div>
+  </div>
+</div>

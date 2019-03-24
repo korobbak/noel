@@ -1,0 +1,52 @@
+<div style="width: 100%; float: right; background: white;
+  box-shadow: 1px 1px 1px 1px rgba(0, 0, 0, 0.5);min-height: 500px;">
+  <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#myModal_create_admin" style="margin: 15px; float: right;margin-right: 20px;">
+    Đăng ký tài khoản cho người post phim
+  </button>
+  <%= render "admin/users/create" %>
+  <div style="clear: both; text-align: center;">
+    <h2 style="font-weight: bold; float: left; margin-left: 20%;">Danh sách tài khoản được post phim</h2>
+    <div class="list" style="width: 80%; margin: auto;">
+    <table class="table table-bordered" style="width: 100%;">
+      <thead>
+        <tr>
+          <th scope="col">Tên</th>
+          <th scope="col">Email</th>
+          <th scope="col">Tài khoản</th>
+          <th scope="col">Ngày tạo tài khoản</th>
+          <th scope="col"></th>
+        </tr>
+      </thead>
+      <tbody>
+        <% @users.each do |u| %>
+          <tr>
+            <th scope="col" class="set_padding">
+              <%= u.first_name + " " + u.last_name %>
+            </th>
+            <th scope="col" class="set_padding">
+              <%= u.email %>
+            </th>
+            <th scope="col" class="set_padding">
+              <%= u.account %>
+            </th>
+            <th scope="col " class="set_padding">
+              <%= u.created_at %>
+            </th>
+            <th>
+              <%= link_to "Xóa người dùng", admin_user_path(id: u.id), class: "btn btn-primary btn-danger set_bot", method: :delete, data: { confirm: "Bạn chắc chắn?"} %>
+            </th>
+          </tr>
+        <% end %>
+      </tbody>
+    </table>
+  </div>
+  </div>
+  <div style="width: 30%; margin:auto;">
+    <%= paginate @users, theme: "twitter-bootstrap-3", window: 3 %>
+  </div>
+  <div style="clear: both; height: 15px;">
+  </div>
+</div>
+<div style="clear: both; height: 5px;">
+
+</div>

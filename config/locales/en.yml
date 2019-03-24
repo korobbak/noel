@@ -1,0 +1,21 @@
+en:
+  application:
+    title: "Noel"
+  header:
+    login: "Login"
+    register: "Register"
+    language: "Language: "
+    home: "Home"
+    kind: "Kind"
+    year: "Year"
+    episode_manager: "Manager episode"
+    episode: "Episode"
+    movie: "Movie"
+    account: "Account"
+    movie_manager: "Manager movie"
+    movie_add: "Add movie"
+    episode_add: "Add episode"
+  footer:
+    content: "Happy "
+  home:
+    title: "Home"

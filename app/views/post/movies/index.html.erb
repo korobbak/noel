@@ -1,0 +1,148 @@
+<div class="admin_movie_frame">
+  <div class="frame_link_admin_movie">
+    <%= link_to new_post_movie_path, class: "link_admin_movie" do %>
+      <div class="item_link_admin_movie_1">
+        Thêm phim
+      </div>
+    <% end %>
+  </div>
+  <div style="clear: both; text-align: center;">
+    <h2 style="font-weight: bold;">Danh sách phim chưa được kiểm duyệt</h2>
+    <table style="width: 100%; margin: auto;">
+      <% @movies.each do |movie| %>
+        <tr style="border-bottom: dashed 1px black;">
+          <td style="width: 150px; height: 150px;">
+            <ul class="menu_admin_movie">
+              <li>
+                <%= image_tag movie.image_url.url, class: "image_admin_movie" %>
+                <ul class="menu_admin_movie_1">
+                  <li>
+                    <div class="black_item">
+                      <table style="width: 110%; margin-left: -35px; margin-top: 15px;">
+                        <tr>
+                          <td style="width: 100px;">
+                            <b style="float: right; font-size: 19px;">Thể loại :</b>
+                          </td>
+                          <td>
+                            <b style="float: left; font-size: 16px; margin-top:2px"><%= movie.movie_types.sample.name %></b>
+                          </td>
+                        </tr>
+                        <tr>
+                          <td style="width: 100px;">
+                            <b style="float: right; font-size: 19px;">Số tập :</b>
+                          </td>
+                          <td>
+                            <b style="float: left; font-size: 16px; margin-top:2px"><%= movie.total_episodes %></b>
+                          </td>
+                        </tr>
+                        <tr>
+                          <td style="width: 100px;">
+                            <b style="float: right; font-size: 19px;">Nội dung :</b>
+                          </td>
+                          <td>
+                            <b style="float: left; font-size: 16px; margin-top:2px"><%= movie.content %></b>
+                          </td>
+                        </tr>
+                      </table>
+                    </div>
+                  </li>
+                </ul>
+              </li>
+            </ul>
+          </td>
+          <td>
+            <table style="width: 100%; margin-top: -50px;">
+              <tr>
+                <td style="width: 150px;">
+                  <b style="float: right; font-size: 19px;">Tên phim :</b>
+                </td>
+                <td>
+                  <b style="float: left; font-size: 16px; margin-top:2px"><%= movie.name %></b>
+                </td>
+              </tr>
+              <tr>
+                <td style="width: 150px;">
+                  <b style="float: right; font-size: 19px;">Người đăng :</b>
+                </td>
+                <td>
+                  <b style="float: left; font-size: 16px; margin-top:2px"> <%= movie.user.first_name + "" +movie.user.last_name %></b>
+                </td>
+              </tr>
+              <tr>
+                <td style="width: 150px;">
+                  <b style="float: right; font-size: 19px;">Ngày đăng :</b>
+                </td>
+                <td>
+                  <b style="float: left; font-size: 16px; margin-top:2px"><%= movie.updated_at.day.to_s + "-" + movie.updated_at.month.to_s + "-" +
+                movie.updated_at.year.to_s %></b>
+                </td>
+              </tr>
+            </table>
+          </td>
+          <td style="width: 150px; height: 150px;">
+            <%= button_to "Chưa kích hoạt", "#" , class: "btn btn-danger", onclick: "return false" %>
+            <div style="height: 5px;">
+            </div>
+            <%= link_to "Xóa phim", post_movie_path(id: movie.id), class: "btn btn-primary", method: :delete, data: { confirm: "Bạn chắc chắn?"} %>
+          </td>
+        </tr>
+      <% end %>
+    </table>
+  </div>
+  <div style="width: 30%; margin:auto;">
+    <%= paginate @movies, theme: "twitter-bootstrap-3", window: 3 %>
+  </div>
+  <div style="clear: both; height: 15px;">
+  </div>
+</div>
+<div style="width: 39%; float: right; background: white;
+  box-shadow: 1px 1px 1px 1px rgba(0, 0, 0, 0.5);min-height: 500px;">
+  <div style="clear: both; text-align: center;">
+    <h2 style="font-weight: bold; float: left; margin-left: 15px;">Tập phim chưa được kiểm duyệt</h2>
+    <div class="list" style="width: 100%; margin: auto;">
+    <table class="table table-bordered" style="width: 100%;">
+      <thead>
+        <tr>
+          <th scope="col">Tên phim</th>
+          <th scope="col">Số tập</th>
+          <th scope="col">Link phim</th>
+          <th scope="col">Trạng thái</th>
+        </tr>
+      </thead>
+      <tbody>
+        <% @episodes.each do |episode| %>
+          <tr>
+            <th scope="col" class="set_padding">
+              <%= episode.movie.name %>
+            </th>
+            <th scope="col" class="set_padding">
+              <%= episode.name %>
+            </th>
+            <th scope="col" class="set_padding">
+              <%= episode.episode_url %>
+            </th>
+              <th scope="col " class="set_padding">
+                <%= button_to "Đã kích hoạt", "#", class: "btn btn-danger",onclick: "return false" %>
+                <div style="height: 5px;">
+            </div>
+              <%= link_to "Xóa tập phim", post_episode_path(id: episode.id), class: "btn btn-primary btn-danger set_bot", method: :delete, data: { confirm: "Bạn chắc chắn?"} %>
+              </th>
+          </tr>
+        <% end %>
+      </tbody>
+    </table>
+  </div>
+  </div>
+  <div style="width: 30%; margin:auto;">
+    <%= paginate @episodes, theme: "twitter-bootstrap-3", window: 3 %>
+  </div>
+  <div style="clear: both; height: 15px;">
+  </div>
+</div>
+<div style="clear: both; height: 5px;">
+
+</div>
+
+<div style="clear: both; height: 5px;">
+
+</div>

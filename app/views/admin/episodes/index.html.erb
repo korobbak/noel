@@ -1,0 +1,56 @@
+<div style="width: 100%; float: right; background: white;
+  box-shadow: 1px 1px 1px 1px rgba(0, 0, 0, 0.5);min-height: 500px;">
+  <div style="clear: both; text-align: center;">
+    <h2 style="font-weight: bold; float: left; margin-left: 20%;">Danh sách tập phim đã được kiểm duyệt</h2>
+    <div class="list" style="width: 80%; margin: auto;">
+    <table class="table table-bordered" style="width: 100%;">
+      <thead>
+        <tr>
+          <th scope="col">Tên phim</th>
+          <th scope="col">Số tập</th>
+          <th scope="col">Link phim</th>
+          <th scope="col">Trạng thái</th>
+        </tr>
+      </thead>
+      <tbody>
+        <% @episodes.each do |episode| %>
+          <tr>
+            <th scope="col" class="set_padding">
+              <%= episode.movie.name %>
+            </th>
+            <th scope="col" class="set_padding">
+              <%= episode.name %>
+            </th>
+            <th scope="col" class="set_padding">
+              <%= episode.episode_url %>
+            </th>
+            <% if episode.status_episode %>
+              <th scope="col " class="set_padding">
+                <%= button_to "Đã kích hoạt", admin_update_episode_path(id: episode.id), method: :patch, class: "btn btn-success" %>
+                <div style="height: 5px;">
+            </div>
+              <%= link_to "Xóa tập phim", admin_episode_path(id: episode.id), class: "btn btn-primary btn-danger set_bot", method: :delete, data: { confirm: "Bạn chắc chắn?"} %>
+              </th>
+            <% else %>
+              <th scope="col " class="set_padding">
+                <%= button_to "Chưa kích hoạt", admin_update_episode_path(id: episode.id), method: :patch, class: "btn btn-danger" %>
+                <div style="height: 5px;">
+            </div>
+              <%= link_to "Xóa tập phim", admin_episode_path(id: episode.id), class: "btn btn-primary btn-danger set_bot", method: :delete, data: { confirm: "Bạn chắc chắn?"} %>
+              </th>
+            <% end %>
+          </tr>
+        <% end %>
+      </tbody>
+    </table>
+  </div>
+  </div>
+  <div style="width: 30%; margin:auto;">
+    <%= paginate @episodes, theme: "twitter-bootstrap-3", window: 3 %>
+  </div>
+  <div style="clear: both; height: 15px;">
+  </div>
+</div>
+<div style="clear: both; height: 5px;">
+
+</div>
