@@ -61,7 +61,7 @@
         </div>
       <% end %>
     <% end %>
-    <% if !current_user.nil? %>
+    <% if !current_user.nil? && current_user.user_role_id == 3 %>
       <% if !@movie_like.empty? %>
         <%= link_to "#", class: "link_detail_2" do %>
           <div class="text_link_detail">
@@ -108,6 +108,20 @@
       </div>
     </div>
 </div>
+<% if !current_user.nil? %>
+    <div style="min-height: 80px; width: 100px; position:fixed; z-index: 9999; margin-top: -850px; margin-left: -110px;">
+      <%= link_to movie_carts_url, class: "link_gio_phim" do %>
+        <div class="Giophim">
+          <div style="height: 5px; width: 100%;">
+          </div>
+          <div style="height: 100%; width: 15px;">
+          </div>
+          <i class="fa fa-qq" style="font-size: 30px;"></i>
+          <p>Giỏ phim</p>
+        </div>
+      <% end %>
+    </div>
+  <% end %>
 <div style="clear: both; height: 5px">
 
 </div>

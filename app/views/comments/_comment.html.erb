@@ -14,9 +14,11 @@
         <%= image_tag comment.comment_image.url, class: "image_comment" %>
       </div>
     <% end %>
-    <div class="like_delete_comment_frame">
-      <%= link_to "Xóa", comment_path(comment), method: :delete,  data: { confirm: 'Bạn chắc chắn?' },remote: true , class: "delete_comment" %>
-    </div>
+    <% if comment.user_id == current_user.id %>
+      <div class="like_delete_comment_frame">
+        <%= link_to "Xóa", comment_path(comment), method: :delete,  data: { confirm: 'Bạn chắc chắn?' },remote: true , class: "delete_comment" %>
+      </div>
+    <% end %>
     <div class="block_comment">
     </div>
   </div>

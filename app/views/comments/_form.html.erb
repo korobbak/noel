@@ -1,5 +1,5 @@
 <div class="input_comment_frame">
-  <% if current_user.present? %>
+  <% if current_user.present? && current_user.user_role_id == 3 %>
     <%= form_for @comment, remote: true do |f| %>
       <div class="logo_comment_frame">
         <%= image_tag "c1.jpg", class: "logo_comment" %>

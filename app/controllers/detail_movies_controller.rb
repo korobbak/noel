@@ -7,7 +7,9 @@ class DetailMoviesController < ApplicationController
     if !current_user.nil?
       @movie_like = []
       Movie.find_by(id: params[:id]).user_like_movies.map do |a|
-        @movie_like << current_user.user_like_movies.find_by(id: a.id)
+        if !current_user.user_like_movies.find_by(id: a.id).nil?
+          @movie_like << current_user.user_like_movies.find_by(id: a.id)
+        end
       end
     end
   end
